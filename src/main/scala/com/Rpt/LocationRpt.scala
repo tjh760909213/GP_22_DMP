@@ -49,6 +49,7 @@ object LocationRpt {
       //key值 是地域的省市
       val pro = row.getAs [String]( "provincename" )
       val city = row.getAs [String]( "cityname" )
+
       //创建三个对应的方法处理九个指标
       val req= RptUtils.request ( requestmode, processnode )
       val cli = RptUtils.click ( requestmode, iseffective )
@@ -60,6 +61,7 @@ object LocationRpt {
     val res: RDD[((String, String), List[Double])] = r.reduceByKey ( (a, b) => {
       List ( a ( 0 ) + b ( 0 ), a ( 1 ) + b ( 1 ), a ( 2 ) + b ( 2 ), a ( 3 ) + b ( 3 ), a ( 4 ) + b ( 4 ), a ( 5 ) + b ( 5 ), a ( 6 ) + b ( 6 ), a ( 7 ) + b ( 7 ), a ( 8 ) + b ( 8 ) )
     } )
+
 
 
 
